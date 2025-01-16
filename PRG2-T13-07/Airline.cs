@@ -28,5 +28,21 @@ namespace PRG2_T13_07
             Code = c;
             Flights = f;
         }
+
+        public bool AddFlight(Flight flight)
+        {
+            if (Flights.ContainsKey(flight.FlightNumber))
+            {
+                return false;
+            }
+
+            Flights.Add(flight.FlightNumber, flight);
+            return true;
+        }
+
+        public double CalculateFees()
+        {
+            if ()
+        }
     }
 }

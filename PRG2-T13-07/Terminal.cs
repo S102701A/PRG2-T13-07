@@ -36,7 +36,7 @@ namespace PRG2_T13_07
         }
         public bool AddAirline (Airline airline)
         {
-            if (airline == null)
+            if (Airlines.ContainsKey(airline.Code))
             {
                 return false;
             }
@@ -46,8 +46,10 @@ namespace PRG2_T13_07
         }
         public bool AddBoardingGate(BoardingGate boardinggate)
         {
-            if (boardinggate == null)
-            { return false; }
+            if (BoardingGates.ContainsKey(boardinggate.GateName))
+            { 
+                return false; 
+            }
             boardingGates.Add(boardinggate.GateName, boardinggate);
             return true;
         }
@@ -55,7 +57,7 @@ namespace PRG2_T13_07
         {
             foreach (var airline in airlines.Values)
             {
-                if (airline.Flights.ContainsKey(flight.FlightNumber))
+                if (Flights.ContainsKey(flight.FlightNumber))
                 {
                     return airline;
                 }
