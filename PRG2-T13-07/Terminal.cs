@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PRG2_T13_07
 {
@@ -33,8 +34,45 @@ namespace PRG2_T13_07
             BoardingGates = bG;
             GateFees = gF;
         }
+        public bool AddAirline (Airline airline)
+        {
+            if (airline == null)
+            {
+                return false;
+            }
 
-
+            airlines.Add(airline.Code, airline);
+            return true;
+        }
+        public bool AddBoardingGate(BoardingGate boardinggate)
+        {
+            if (boardinggate == null)
+            { return false; }
+            boardingGates.Add(boardinggate.GateName, boardinggate);
+            return true;
+        }
+        public Airline GetAirlineFromFlight(Flight flight)
+        {
+            foreach (var airline in airlines.Values)
+            {
+                if (airline.Flights.ContainsKey(flight.FlightNumber))
+                {
+                    return airline;
+                }
+            }
+            return null;
+        }
+        public void PrintAirlineFees()
+        {
+            foreach (var airline in airlines.Values)
+            {
+                Console.WriteLine($"Airline: {airline.Name}, Fees: {airline.CalculateFees()}");
+            }
+        }
+        public override string ToString()
+        {
+            return $"Terminal: {TerminalName}, Airlines: {Airlines.Count}, Flights: {Flights.Count}, Gates: {BoardingGates.Count}";
+        }
 
     }
 }

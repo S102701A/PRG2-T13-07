@@ -28,15 +28,5 @@ namespace PRG2_T13_07
             Code = c;
             Flights = f;
         }
-         public bool AddAirline (Airline airline)
-        {
-            if (airline == null)
-            {
-                return false;
-            }
-            airline.Add(airline.Code, airline);
-            return true;
-        }
-        public AddBoardingGate 
     }
 }

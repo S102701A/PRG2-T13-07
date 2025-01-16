@@ -38,10 +38,10 @@ namespace PRG2_T13_07
         {
             if (Origin == "SIN")
             {
-                return 300.0+500.0;
+                return 500.0;
             }
             else
-                return 300.0+800.0;
+                return 800.0;
         }
 
         public override string ToString()
