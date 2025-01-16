@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +28,15 @@ namespace PRG2_T13_07
             Code = c;
             Flights = f;
         }
+         public bool AddAirline (Airline airline)
+        {
+            if (airline == null)
+            {
+                return false;
+            }
+            airline.Add(airline.Code, airline);
+            return true;
+        }
+        public AddBoardingGate 
     }
 }
