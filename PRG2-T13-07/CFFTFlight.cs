@@ -20,5 +20,15 @@ namespace PRG2_T13_07
         {
             RequestFee = rF;
         }
+
+        public override double CalculateFees()
+        {
+            return base.CalculateFees()+150.0;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString()+"Special Code: CFFT";
+        }
     }
 }

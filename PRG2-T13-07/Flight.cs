@@ -44,6 +44,11 @@ namespace PRG2_T13_07
                 return 300.0+800.0;
         }
 
+        public override string ToString()
+        {
+            return "FlightNumber: "+FlightNumber+"\nOrigin: "+Origin + "\nDestination: "+Destination+"\nExpectedTime: "+ExpectedTime+"\nStatus: "+Status;
+        }
+
 
 
     }

@@ -21,5 +21,15 @@ namespace PRG2_T13_07
         {
             RequestFee = rF;
         }
+
+        public override double CalculateFees()
+        {
+            return base.CalculateFees()+300.0;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString()+"\nSpecial Code: DDJB";
+        }
     }
 }

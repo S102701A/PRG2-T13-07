@@ -17,5 +17,15 @@ namespace PRG2_T13_07
         {
 
         }
+
+        public override double CalculateFees()
+        {
+            return base.CalculateFees();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }
