@@ -34,6 +34,17 @@ namespace PRG2_T13_07
             Status = stat;
         }
 
+        public virtual double CalculateFees()
+        {
+            if (Origin == "SIN")
+            {
+                return 300.0+500.0;
+            }
+            else
+                return 300.0+800.0;
+        }
+
+
 
     }
 }
