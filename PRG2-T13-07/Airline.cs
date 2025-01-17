@@ -108,5 +108,28 @@ namespace PRG2_T13_07
             return totalFees;
 
         }
+
+        public bool RemoveFlight(string flightNumber)
+        {
+            if (Flights.ContainsKey(flightNumber))
+            {
+                Flights.Remove(flightNumber); 
+                return true; 
+            }
+
+            return false; 
+        }
+
+        public override string ToString()
+        {
+            string flightDetails = "";
+            foreach (var flight in Flights.Values)
+            {
+                flightDetails += flight.ToString() + "\n";
+            }
+
+            return $"Airline: {Name} ({Code})\nNumber of Flights: {Flights.Count}\nFlight Details:\n{flightDetails}";
+        }
+
     }
 }

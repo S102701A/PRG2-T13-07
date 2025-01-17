@@ -75,7 +75,31 @@ namespace PRG2_T13_07
         }
         public override string ToString()
         {
-            return $"Terminal: {TerminalName}, Airlines: {Airlines.Count}, Flights: {Flights.Count}, Gates: {BoardingGates.Count}";
+            string airlineDetails = "";
+            foreach (var airline in Airlines.Values)
+            {
+                airlineDetails += airline.ToString() + "\n";
+            }
+
+            string flightDetails = "";
+            foreach (var flight in Flights.Values)
+            {
+                flightDetails += flight.ToString() + "\n";
+            }
+
+            string boardingGateDetails = "";
+            foreach (var gate in BoardingGates.Values)
+            {
+                boardingGateDetails += $"Gate Name: {gate.GateName}, Supports CFFT: {gate.SupportsCFFT}, Supports DDJB: {gate.SupportsDDJB}, Supports LWTT: {gate.SupportsLWTT}\n";
+            }
+
+            return $"Terminal: {TerminalName}\n" +
+                   $"Number of Airlines: {Airlines.Count}\n" +
+                   $"Number of Flights: {Flights.Count}\n" +
+                   $"Number of Boarding Gates: {BoardingGates.Count}\n\n" +
+                   $"Airlines:\n{airlineDetails}\n" +
+                   $"Flights:\n{flightDetails}\n" +
+                   $"Boarding Gates:\n{boardingGateDetails}";
         }
 
     }
