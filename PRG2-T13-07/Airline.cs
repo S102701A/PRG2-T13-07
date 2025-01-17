@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,70 @@ namespace PRG2_T13_07
 
         public double CalculateFees()
         {
-            if ()
+
+            double totalFees = 0;
+            double discount = 0;
+
+         
+            foreach (var flight in Flights.Values)
+            {
+                totalFees += flight.CalculateFees();  
+                                                      
+                totalFees += 300;
+
+                
+                if (flight is DDJBFlight)
+                {
+                    totalFees += 300; 
+                }
+                else if (flight is CFFTFlight)
+                {
+                    totalFees += 150; 
+                }
+                else if (flight is LWTTFlight)
+                {
+                    totalFees += 500; 
+                }
+            }
+
+            
+            if (Flights.Count >= 3)
+            {
+                discount += (Flights.Count / 3) * 350;
+            }
+
+            if (Flights.Count > 5)
+            {
+                discount += totalFees * 0.03; 
+            }
+
+            foreach (var flight in Flights.Values)
+            {
+                if (flight.ExpectedTime.Hour < 11 || flight.ExpectedTime.Hour > 21)
+                {
+                    discount += 110;
+                }
+            }
+
+            foreach (var flight in Flights.Values)
+            {
+                if (flight.Origin == "DXB" || flight.Origin == "BKK" || flight.Origin == "NRT")
+                {
+                    discount += 25;
+                }
+            }
+
+            foreach (var flight in Flights.Values)
+            {
+                if (flight is NORMFlight)
+                {
+                    discount += 50; 
+                }
+            }
+
+            totalFees -= discount;
+            return totalFees;
+
         }
     }
 }

@@ -55,14 +55,16 @@ namespace PRG2_T13_07
         }
         public Airline GetAirlineFromFlight(Flight flight)
         {
-            foreach (var airline in airlines.Values)
+            foreach (var airline in Airlines.Values)
             {
-                if (Flights.ContainsKey(flight.FlightNumber))
+                if (airline.Flights.ContainsKey(flight.FlightNumber))
                 {
                     return airline;
                 }
+                
             }
             return null;
+            
         }
         public void PrintAirlineFees()
         {
