@@ -20,7 +20,7 @@ namespace PRG2_T13_07
         public DateTime ExpectedTime { get; set; }
         public string Status { get; set; }
 
-        public Flight()
+        public Flight(string number)
         {
 
         }
