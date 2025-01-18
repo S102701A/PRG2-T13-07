@@ -48,8 +48,5 @@ namespace PRG2_T13_07
         {
             return "FlightNumber: "+FlightNumber+"\nOrigin: "+Origin + "\nDestination: "+Destination+"\nExpectedTime: "+ExpectedTime+"\nStatus: "+Status;
         }
-
-
-
     }
 }
