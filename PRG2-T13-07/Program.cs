@@ -77,6 +77,54 @@ class Program
         }
     }
 
+    //Feature 3 
+    static void ListAllFlights(Dictionary<string, Flight> flightsdictionary, Dictionary<string, string> airlines)
+    {
+        Console.WriteLine("=============================================");
+        Console.WriteLine("List of Airlines for Changi Airport Terminal 5");
+        Console.WriteLine("=============================================");
+        Console.WriteLine("Airline Code    Airline Name");
+        foreach (var airline in airlines)
+        {
+            Console.WriteLine($"{airline.Key,-15}{airline.Value,-30}");
+        }
+
+        Console.Write("Enter Airline Code: ");
+        string airlineCode = Console.ReadLine().ToUpper();
+
+        if (!airlines.ContainsKey(airlineCode))
+        {
+            Console.WriteLine("Invalid Airline Code. Please try again.");
+            return;
+        }
+
+        Console.WriteLine("=============================================");
+        Console.WriteLine($"List of Flights for {airlines[airlineCode]}");
+        Console.WriteLine("=============================================");
+        Console.WriteLine("Flight Number   Airline Name           Origin                 Destination            Expected Departure/Arrival Time");
+
+        bool hasFlights = false;
+        foreach (var flight in flightsdictionary.Values)
+        {
+            if (flight.FlightNumber.StartsWith(airlineCode)) 
+            {
+                hasFlights = true;
+                Console.WriteLine(
+                    $"{flight.FlightNumber, -15}" + 
+                    $"{airlines[airlineCode], -20}" + 
+                    $"{flight.Origin, -22}" + 
+                    $"{flight.Destination, -22}" + 
+                    $"{flight.ExpectedTime.ToString("dd/MM/yyyy hh:mm:ss tt")}" 
+                );
+            }
+        }
+
+        if (!hasFlights)
+        {
+            Console.WriteLine("No flights found for this airline.");
+        }
+    }
+
     private static void ListBoardingGates() // FEATURE 4 
     {
         Console.WriteLine("=============================================");
