@@ -263,8 +263,7 @@ class Program
         foreach (var flight in flights)
         {
             Console.WriteLine(
-                $"{flight.FlightNumber, -20}" +
-                $"{GetAirlineName(flight.FlightNumber), -20}" +
+                $"{flight.FlightNumber, -20}" + 
                 $"{flight.Origin, -22}" +
                 $"{flight.Destination, -22}" +
                 $"{flight.ExpectedTime.ToString("dd/MM/yyyy hh:mm:ss tt"), -30}" +
