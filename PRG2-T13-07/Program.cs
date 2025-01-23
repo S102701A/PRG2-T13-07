@@ -205,7 +205,7 @@ class Program
                     }
                 }
                 else
-                    //HAVENT FINISH THIS PART 
+                    // ASK MR BEN THIS PART
                     Console.WriteLine($"Flight {flightNumber} has been successfully assigned to Gate {gatename}!");
             }
             else
@@ -268,7 +268,7 @@ class Program
                 $"{flight.Destination, -22}" +
                 $"{flight.ExpectedTime.ToString("dd/MM/yyyy hh:mm:ss tt"), -30}" +
                 $"{flight.Status, -15}" +
-                $"{flight.BoardingGate}"
+                $"{flight.BoardingGate}" // AND THIS
             );
         }
     }
