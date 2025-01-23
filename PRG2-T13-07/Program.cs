@@ -80,6 +80,7 @@ class Program
     //Feature 3 
     static void ListAllFlights(Dictionary<string, Flight> flightsdictionary, Dictionary<string, string> airlines)
     {
+        //feature 7 
         Console.WriteLine("=============================================");
         Console.WriteLine("List of Airlines for Changi Airport Terminal 5");
         Console.WriteLine("=============================================");
@@ -98,8 +99,9 @@ class Program
             return;
         }
 
+        //feature 3
         Console.WriteLine("=============================================");
-        Console.WriteLine($"List of Flights for {airlines[airlineCode]}");
+        Console.WriteLine($"List of Flights for Changi Airport Terminal");
         Console.WriteLine("=============================================");
         Console.WriteLine("Flight Number   Airline Name           Origin                 Destination            Expected Departure/Arrival Time");
 
@@ -246,12 +248,40 @@ class Program
                 return;
             else if (response == "N") break;
         }
-
-
-
     }
 
+    static void DisplayScheduledFlights(List<Flight> flights)
+    {
+
+        flights.Sort();
+
+        Console.WriteLine("=============================================");
+        Console.WriteLine("Flight Schedule for Changi Airport Terminal 5");
+        Console.WriteLine("=============================================");
+        Console.WriteLine("Flight Number   Airline Name           Origin                 Destination            Expected Departure/Arrival Time     Status          Boarding Gate");
+
+        foreach (var flight in flights)
+        {
+            Console.WriteLine(
+                $"{flight.FlightNumber, -20}" +
+                $"{GetAirlineName(flight.FlightNumber), -20}" +
+                $"{flight.Origin, -22}" +
+                $"{flight.Destination, -22}" +
+                $"{flight.ExpectedTime.ToString("dd/MM/yyyy hh:mm:ss tt"), -30}" +
+                $"{flight.Status, -15}" +
+                $"{flight.BoardingGate}"
+            );
+        }
+    }
 }
+    
+
+
+
+
+
+//feature 5 break/ continue 
+//finish feature 3 and 9 
 
 
        

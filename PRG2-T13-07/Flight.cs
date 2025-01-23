@@ -43,6 +43,10 @@ namespace PRG2_T13_07
             else
                 return 800.0;
         }
+        public int CompareTo(Flight other)
+        {
+            return this.ExpectedTime.CompareTo(other.ExpectedTime);
+        }
 
         public override string ToString()
         {
