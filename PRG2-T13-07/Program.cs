@@ -181,31 +181,37 @@ class Program
 
                 // Assign the flight to the gate
                 boardingGate.Flight = flight;
+                
 
-                Console.WriteLine("Would you like to update the status of the flight? (Y/N)");
-                string option = Console.ReadLine();
-                if (option=="Y")
+                while (true)
                 {
-                    Console.WriteLine("1.Delayed");
-                    Console.WriteLine("2.Boarding");
-                    Console.WriteLine("3.On Time");
-                    Console.WriteLine("Please select the new status of the flight:");
-                    int statusoption = Convert.ToInt32(Console.ReadLine());
-                    if (statusoption==1)
+                    Console.WriteLine("Would you like to update the status of the flight? (Y/N)");
+                    string option = Console.ReadLine();
+                    if (option=="Y")
                     {
-                        flight.Status = "Delayed";
+                        Console.WriteLine("1.Delayed");
+                        Console.WriteLine("2.Boarding");
+                        Console.WriteLine("3.On Time");
+                        Console.WriteLine("Please select the new status of the flight:");
+                        int statusoption = Convert.ToInt32(Console.ReadLine());
+                        if (statusoption==1)
+                        {
+                            flight.Status = "Delayed";
+                        }
+                        else if (statusoption==2)
+                        {
+                            flight.Status = "Boarding";
+                        }
+                        else if (statusoption==3)
+                        {
+                            flight.Status = "On Time";
+                        }
                     }
-                    else if (statusoption==2)
+                    else
                     {
-                        flight.Status = "Boarding";
-                    }
-                    else if (statusoption==3)
-                    {
-                        flight.Status = "On Time";
+                        break;
                     }
                 }
-                else
-                    // ASK MR BEN THIS PART
                     Console.WriteLine($"Flight {flightNumber} has been successfully assigned to Gate {gatename}!");
             }
             else
@@ -268,7 +274,7 @@ class Program
                 $"{flight.Destination, -22}" +
                 $"{flight.ExpectedTime.ToString("dd/MM/yyyy hh:mm:ss tt"), -30}" +
                 $"{flight.Status, -15}" +
-                $"{flight.BoardingGate}" // AND THIS
+                $"{flight.BoardingGate.GateName}" // AND THIS
             );
         }
     }
