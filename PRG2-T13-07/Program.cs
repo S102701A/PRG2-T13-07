@@ -6,13 +6,18 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Transactions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-//Feature 2 & 3 
+
+//==========================================================
+// Student Number : S10270132
+// Student Name : Muhammad Hafizuddin bin Norrudin
+// Partner Name : Daymas Shield Koh Yee Sing
+//=========================================================
+
 class Program
 {
     static void Main()
     {
-        Flight();
-        AssignBoardingGate();
+        
     }
 
     private static Dictionary<string, Airline> airlines = new Dictionary<string, Airline>();
@@ -142,15 +147,7 @@ class Program
         Console.WriteLine(); 
     }
 
-    //feature 5 & 6 
-    //Hi Hafiz, if you're reading this the features arent done yet, still have abit of changes to make, if you can identify and find out whats wrong please help
-    //I have also added the boarding gate and flights file to the solution, so you dont have to add those two
-
-    // I edited your feature 5 but i havent take a look on your feature 6. I havent really finished feature 5 left abit more only. i think you can do it. i alrdy put the comment there
-    // refer to the sample output file cus got one part you never do is when they ask for the new status. yeah that part i havent do yet.
-    //btw for your feature 2 i added a new dictionary for the specialrequestcode because specialrequestcode is not part of the flight. so i just put the status for flight null then in feature 5 we will
-    //  have to ask for the status. i will maybe continue tonight after you do. for feature 6 right i think no need put while true first cus we will put it in the main method then we call feature 6 there while running the
-    //  while true. i also change some of the naming conventions edy.
+    
     static void AssignBoardingGate(Dictionary<string, Flight> flightsDictionary)
     {
         Console.WriteLine("=============================================");
@@ -179,7 +176,6 @@ class Program
                 Console.WriteLine($"Supports CFFT: {boardingGate.SupportsCFFT}");
                 Console.WriteLine($"Supports LWTT: {boardingGate.SupportsLWTT}");
 
-                // Assign the flight to the gate
                 boardingGate.Flight = flight;
                 
 
@@ -226,7 +222,7 @@ class Program
 
         
     }
-    static void CreateNewFlight(Dictionary<string, Flight> flightsDictionary) //this is for feature 6, anything just change and lmk 
+    static void CreateNewFlight(Dictionary<string, Flight> flightsDictionary) //feature 6 
     {
         while (true)
         {
@@ -274,7 +270,7 @@ class Program
                 $"{flight.Destination, -22}" +
                 $"{flight.ExpectedTime.ToString("dd/MM/yyyy hh:mm:ss tt"), -30}" +
                 $"{flight.Status, -15}" +
-                $"{flight.BoardingGate.GateName}" // AND THIS
+                $"{flight.BoardingGate.GateName}" 
             );
         }
     }
@@ -285,8 +281,7 @@ class Program
 
 
 
-//feature 5 break/ continue 
-//finish feature 3 and 9 
+
 
 
        

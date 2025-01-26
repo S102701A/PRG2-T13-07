@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//==========================================================
+// Student Number : S10270132
+// Student Name : Muhammad Hafizuddin bin Norrudin
+// Partner Name : Daymas Shield Koh Yee Sing
+//=========================================================
+
 namespace PRG2_T13_07
 {
     internal class BoardingGate
