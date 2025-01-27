@@ -23,7 +23,7 @@ namespace PRG2_T13_07
 
         }
 
-        public LWTTFlight(string fN, string ori, string dest, DateTime eT, string stat, double rF) : base(fN, ori, dest, eT, stat)
+        public LWTTFlight(string fN, string ori, string dest, DateTime eT, string stat, BoardingGate bg, double rF) : base(fN, ori, dest, eT, stat, bg)
         {
             RequestFee = rF;
         }

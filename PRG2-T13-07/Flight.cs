@@ -28,7 +28,7 @@ namespace PRG2_T13_07
 
         public BoardingGate BoardingGate { get; set; }
 
-        public Flight(string number)
+        public Flight()
         {
 
         }

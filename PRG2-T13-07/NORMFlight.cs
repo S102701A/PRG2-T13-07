@@ -19,7 +19,7 @@ namespace PRG2_T13_07
 
         }
 
-        public NORMFlight(string fN, string ori, string dest, DateTime eT, string stat): base(fN,ori,dest,eT,stat)
+        public NORMFlight(string fN, string ori, string dest, DateTime eT, string stat,BoardingGate bg) : base(fN,ori,dest,eT,stat, bg)
         {
 
         }
