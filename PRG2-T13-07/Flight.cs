@@ -25,6 +25,7 @@ namespace PRG2_T13_07
         public string Destination { get; set; }
         public DateTime ExpectedTime { get; set; }
         public string Status { get; set; }
+        public string SpecialRequestCode { get; set; }
 
         public BoardingGate BoardingGate { get; set; }
 

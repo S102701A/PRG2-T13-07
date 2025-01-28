@@ -551,6 +551,76 @@ class Program
                 $"{flight.BoardingGate.GateName}" 
             );
         }
+
+        //advanced feature B 
+        static void DisplayTotalFeePerAirline(List<Flight> flights, Dictionary<string, string> airlines)
+        {
+            Console.WriteLine("=============================================");
+            Console.WriteLine("Total Fees per Airline for Changi Airport Terminal 5");
+            Console.WriteLine("=============================================");
+
+            double totalFees = 0;
+            double totalDiscounts = 0;
+
+            var groupedFlights = flights.GroupBy(f => f.FlightNumber.Substring(0, 2));
+
+            foreach (var airlineFlights in groupedFlights)
+            {
+                string airlineCode = airlineFlights.Key;
+                string airlineName = airlines.ContainsKey(airlineCode) ? airlines[airlineCode] : "Unknown Airline";
+
+                double airlineFees = 0;
+                double airlineDiscounts = 0;
+
+                Console.WriteLine($"Airline: {airlineName} ({airlineCode})");
+
+                foreach (var flight in airlineFlights)
+                {
+                    double flightFee = 0;
+
+                    if (flight.Origin == "Singapore (SIN)")
+                        flightFee += 800;
+                    if (flight.Destination == "Singapore (SIN)")
+                        flightFee += 500; 
+                    if (flight.SpecialRequestCode == "DDJB")
+                        flightFee += 300;
+                    else if (flight.SpecialRequestCode == "CFFT")
+                        flightFee += 150;
+                    else if (flight.SpecialRequestCode == "LWTT")
+                        flightFee += 500;
+
+                    flightFee += 300;
+
+                    Console.WriteLine($"Flight {flight.FlightNumber}: ${flightFee}");
+                    airlineFees += flightFee;
+                }
+
+                int flightCount = airlineFlights.Count();
+
+                airlineDiscounts += (flightCount / 3) * 350;
+                if (flightCount > 5)
+                    airlineDiscounts += airlineFees * 0.03;
+
+                Console.WriteLine($"Subtotal Fees: ${airlineFees}");
+                Console.WriteLine($"Subtotal Discounts: -${airlineDiscounts}");
+                Console.WriteLine($"Total Fees for {airlineName}: ${airlineFees - airlineDiscounts}");
+                Console.WriteLine("---------------------------------------------");
+
+                totalFees += airlineFees;
+                totalDiscounts += airlineDiscounts;
+            }
+
+            double finalTotalFees = totalFees - totalDiscounts;
+            double discountPercentage = (totalDiscounts / totalFees) * 100;
+
+            Console.WriteLine("=============================================");
+            Console.WriteLine("Summary for All Airlines");
+            Console.WriteLine("=============================================");
+            Console.WriteLine($"Total Fees (Before Discounts): ${totalFees}");
+            Console.WriteLine($"Total Discounts: -${totalDiscounts}");
+            Console.WriteLine($"Final Total Fees: ${finalTotalFees}");
+            Console.WriteLine($"Discount Percentage: {discountPercentage:F2}%");
+        }
     }
 }
     
