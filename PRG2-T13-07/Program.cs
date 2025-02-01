@@ -581,10 +581,8 @@ class Program
 
             bool hasFlights = false;
 
-
             foreach (var flight in flightsdictionary.Values)
             {
-
                 if (flight.FlightNumber.StartsWith(airlineCode))
                 {
                     hasFlights = true;
@@ -597,11 +595,10 @@ class Program
                 }
             }
 
-            
             while (true)
             {
                 Console.Write("\nChoose an existing Flight to modify or delete: ");
-                string flightNumber = Console.ReadLine().ToUpper();
+                string flightNumber = Console.ReadLine().Trim().ToUpper();
 
                 if (!airline.Flights.ContainsKey(flightNumber))
                 {
@@ -613,7 +610,7 @@ class Program
 
                 bool exitModify = false;  // Flag to track when to exit all loops
 
-                while (!exitModify)
+                while (true)
                 {
                     Console.WriteLine("\n1. Modify Flight");
                     Console.WriteLine("2. Delete Flight");
@@ -647,8 +644,6 @@ class Program
                                         {
                                             flightToModify.Origin = origin;
                                             isValid = true;
-                                            Console.WriteLine("Origin has been updated.");
-                                            break;
                                         }
                                     }
 
@@ -659,6 +654,7 @@ class Program
                                     else
                                     {
                                         exitModifyBasic = true;  // Exit the loop
+                                        break;
                                     }
                                 }
                                 catch (FormatException)
@@ -705,28 +701,27 @@ class Program
                             }
 
                             // Expected Time modification
-                            bool exitModifyTime = false;
-                            while (!exitModifyTime)
+                            while (true)
                             {
+                                Console.Write("Enter new Expected Departure/Arrival Time (dd/M/yyyy H:mm): ");
+                                string userInput = Console.ReadLine();
                                 try
                                 {
-                                    Console.Write("Enter new Expected Departure/Arrival Time (dd/MM/yyyy HH:mm): ");
-                                    flightToModify.ExpectedTime = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", null);
-                                    exitModifyTime = true; // Exit the loop
+                                    flightToModify.ExpectedTime = DateTime.ParseExact(userInput, "d/M/yyyy H:mm", null);
+                                    break; // Exit the loop after successful input
                                 }
                                 catch (FormatException)
                                 {
-                                    Console.WriteLine("Invalid option. Please try again.");
-                                    continue;
+                                    Console.WriteLine("Invalid format. Please use (dd/MM/yyyy HH:mm) and try again.");
                                 }
                             }
                             Console.WriteLine("Flight updated!");
                             Console.WriteLine(flightToModify.ToString());
-                            Console.WriteLine("Special Request Code: "+specialRequestCodes[flightToModify.FlightNumber]);
+                            Console.WriteLine("Special Request Code: " + specialRequestCodes[flightToModify.FlightNumber]);
                             if (flightToModify.BoardingGate == null)
                                 Console.WriteLine("Boarding Gate: Unassigned");
                             else
-                                Console.WriteLine("Boarding Gate: "+flightToModify.BoardingGate.GateName);
+                                Console.WriteLine("Boarding Gate: " + flightToModify.BoardingGate.GateName);
                             exitModifyorDelete = true;
                             exitModify = true;
                         }
@@ -759,8 +754,8 @@ class Program
                             }
                             Console.WriteLine("\nFlight status updated!");
                             flightToModify.ToString();
-                            Console.WriteLine("Special Request Code: "+specialRequestCodes[flightToModify.FlightNumber]);
-                            Console.WriteLine("Boarding Gate: "+flightToModify.BoardingGate.GateName);
+                            Console.WriteLine("Special Request Code: " + specialRequestCodes[flightToModify.FlightNumber]);
+                            Console.WriteLine("Boarding Gate: " + flightToModify.BoardingGate.GateName);
                             exitModifyorDelete = true;
                             exitModify = true;
                         }
@@ -792,8 +787,8 @@ class Program
                             }
                             Console.WriteLine("\nSpecial Request Code updated!");
                             flightToModify.ToString();
-                            Console.WriteLine("Special Request Code: "+specialRequestCodes[flightToModify.FlightNumber]);
-                            Console.WriteLine("Boarding Gate: "+flightToModify.BoardingGate.GateName);
+                            Console.WriteLine("Special Request Code: " + specialRequestCodes[flightToModify.FlightNumber]);
+                            Console.WriteLine("Boarding Gate: " + flightToModify.BoardingGate.GateName);
                             exitModifyorDelete = true;
                             exitModify = true;
                         }
@@ -833,8 +828,8 @@ class Program
                             }
                             Console.WriteLine("\nBoarding Gate updated!");
                             flightToModify.ToString();
-                            Console.WriteLine("Special Request Code: "+specialRequestCodes[flightToModify.FlightNumber]);
-                            Console.WriteLine("Boarding Gate: "+flightToModify.BoardingGate.GateName);
+                            Console.WriteLine("Special Request Code: " + specialRequestCodes[flightToModify.FlightNumber]);
+                            Console.WriteLine("Boarding Gate: " + flightToModify.BoardingGate.GateName);
                             exitModifyorDelete = true;
                             exitModify = true;
 
@@ -854,6 +849,11 @@ class Program
                         Console.WriteLine("Flight has been deleted.");
                         exitModifyorDelete = true;
                         exitModify = true;
+
+                    }
+                    if (exitModifyorDelete)//this chekcs whether the block is true, if it is, it will exit out of this method and go back to the main loop 
+                    {
+                        return;
                     }
                 }
             }
