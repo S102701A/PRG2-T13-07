@@ -25,7 +25,6 @@ namespace PRG2_T13_07
         public string Destination { get; set; }
         public DateTime ExpectedTime { get; set; }
         public string Status { get; set; }
-        public string SpecialRequestCode { get; set; }
 
         public BoardingGate BoardingGate { get; set; }
 
@@ -60,6 +59,8 @@ namespace PRG2_T13_07
 
         public override string ToString()
         {
+            if (Status==null)
+                Status = "Scheduled";
             return "FlightNumber: "+FlightNumber+"\nOrigin: "+Origin + "\nDestination: "+Destination+"\nExpectedTime: "+ExpectedTime+"\nStatus: "+Status;
         }
     }
